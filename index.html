@@ -1,0 +1,52 @@
+<!doctype html>
+<head xmlns="http://www.w3.org/1999/html">
+	<title>SMS Emulator</title>
+
+	<link href="./styles/main.css" rel="stylesheet" type="text/css">
+	<script src="./scripts/sms.js"></script>
+    <script src="./scripts/z80.js"></script>
+    <script src="./scripts/vdp.js"></script>
+    <script src="./scripts/psg.js"></script>
+</head>
+    
+<body>
+	<h1>SMS Emulator</h1>
+	<p>
+		Just a fun project to make a Sega Master System emulator using ES6...<br/><br/>
+
+		<a href="#" id="start">Click to start</a>
+	</p>	
+
+	<canvas></canvas>
+
+    <script>
+    	window.onload = function() {
+    		var canvas = document.querySelector('canvas');
+    		var start = document.querySelector('#start');
+
+    		document.addEventListener('keydown', function(event) {
+    		});
+
+    		document.addEventListener('keyup', function(event) {
+    		});
+
+    		start.onclick = function() {
+    			var xhr = new XMLHttpRequest;
+    			xhr.open('get', 'roms/sonic.sms', true);
+	    		xhr.responseType = 'arraybuffer';
+
+	    		xhr.onload = function() {
+                    rom = new Uint8Array(xhr.response);
+	    		}
+
+	    		xhr.send();
+
+	    		document.querySelector('#start').style.display = 'none';
+
+    			return false;
+    		};
+    	};
+    </script>
+
+    </body>
+</html>
